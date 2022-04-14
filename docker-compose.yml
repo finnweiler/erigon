@@ -46,7 +46,7 @@ services:
 
   rpcdaemon: # Service to server JSON-RCP API
     image: thorax/erigon:${TAG:-latest}
-    command: rpcdaemon ${RPCDAEMON_FLAGS-} --datadir=/home/erigon/.local/share/erigon --private.api.addr=erigon:9090 --txpool.api.addr=erigon:9090 --http.addr=0.0.0.0 --http.vhosts=* --http.corsdomain=* --http.api=eth,debug,net --ws
+    command: rpcdaemon ${RPCDAEMON_FLAGS-} --datadir=/home/erigon/.local/share/erigon --private.api.addr=erigon:9090 --txpool.api.addr=erigon:9090 --http.addr=0.0.0.0 --http.vhosts=* --http.corsdomain=* --http.api=eth,erigon,web3,net,debug,trace,txpool --ws
     pid: service:erigon # Use erigon's PID namespace. It's required to open Erigon's DB from another process (RPCDaemon local-mode)
     volumes_from:
       - erigon
